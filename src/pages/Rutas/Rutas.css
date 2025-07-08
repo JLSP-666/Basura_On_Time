@@ -1,0 +1,9 @@
+.DivPanelAdmin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 600px;
+    width: 100%;
+}
+

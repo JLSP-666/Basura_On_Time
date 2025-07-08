@@ -1,0 +1,9 @@
+.DivCamionSolicitudes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 600px;
+    width: 800px;
+    padding-top: 40px;
+}

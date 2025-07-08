@@ -1,0 +1,23 @@
+.FontCursive {
+    font-family: 'lobster', cursive;
+    text-shadow: black 8px 8px 10px;
+}
+
+.sectFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100dvh;
+    background: var(--Voscuro) center center;
+    gap: clamp(1rem, 8vw, 12rem);
+}
+
+.Img-logo {
+    max-width: 320px;
+    min-width: 180px;
+  }
+
+.FontGeologica{
+    font-family: 'geologica', sans-serif;
+}

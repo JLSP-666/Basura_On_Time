@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --Vclaro: #008D5D;
+  --Vclaro2: #0A372D;
+  --Vclaro3: #004435;
+  --Voscuro: #001F14;
+  --Voscuro2: #032C22;
+  --Voscuro3: #001004;
+  --Voscuro4: #00241f;
+  --Rojo:#531b16;
+  --Vgris: #859B96;
+}
+

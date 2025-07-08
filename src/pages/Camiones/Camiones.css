@@ -1,0 +1,45 @@
+
+.sectFirst {
+    height: 100dvh;
+}
+
+.FontGeologica{
+    font-family: 'geologica', sans-serif;
+}
+
+.DivCamion {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 60px; /* más espacio arriba */
+  margin: 0 auto 0 850px;
+  width: 800px;
+  height: 600px;
+  border-radius: 1rem;
+  border: 2px solid var(--colorBorde);
+  background-color: var(--Voscuro2);
+  gap: 2rem; /* espacio entre los elementos hijos */
+}
+
+.FontCursive {
+    font-family: 'lobster', cursive;
+    text-shadow: black 8px 8px 10px;
+}
+
+.ImgLogo{
+    max-width: 360px;
+    min-width: 180px;
+}
+
+/* Para asegurar que no se desborde horizontalmente */
+.DivCamion {
+  overflow-x: hidden;
+}
+
+/* Opcional para que los textos largos no se estiren */
+p.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

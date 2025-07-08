@@ -1,0 +1,16 @@
+.FontGeologica{
+    font-family: 'Geologica', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section-offset {
+  scroll-margin-top: 120px; /* Ajusta si tu Header mide más o menos */
+}
+
+.FontCursiveClean {
+  font-family: 'Lobster', cursive;
+  text-shadow: none;
+}

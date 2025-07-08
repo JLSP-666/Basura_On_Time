@@ -1,0 +1,22 @@
+.navlink-button {
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.navlink-button:hover {
+  /* Cambia el color del texto suavemente al hover */
+  color: #008D5D; /* verde lima que usas */
+}
+
+.navlink-button.active {
+  /* Color del link activo */
+  color: #008D5D;
+  font-weight: 700;
+}
+
+.navlink-button svg {
+  /* Color del icono para que herede el texto */
+  fill: currentColor;
+}

@@ -1,0 +1,92 @@
+#botones {
+  background-color: #004435;
+  font-size: 90px;
+  border-radius: 0px 0px 10px 10px;
+  cursor: url('../img/freddy-fazbear.gif');
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  transition: height 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  padding-bottom: 5px;
+}
+
+#botones:hover {
+  height: 120px;
+  padding-top: 25px;
+  align-items: end;
+  justify-content: center;
+}
+
+.main {
+  height: 20px;
+  width: 20px;
+}
+
+.logo {
+  font-size: 80px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  z-index: 2;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de destello */
+.logo::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: destello 2s infinite;
+}
+
+@keyframes destello {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+#login {
+  background-color: rgb(255, 255, 255);
+  width: 120px;
+  height: 50px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+}
+
+#login-2 {
+  background-color: rgb(0, 0, 0);
+  width: 120px;
+  height: 50px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  color: white;
+}
