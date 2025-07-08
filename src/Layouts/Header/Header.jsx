@@ -1,16 +1,30 @@
-import { FaUserPlus, FaSignInAlt, FaRegClock, FaTruckMoving } from "react-icons/fa";
+import React, { useState } from 'react';
+import {
+  FaUserPlus,
+  FaSignInAlt,
+  FaTruckMoving,
+  FaSignOutAlt,
+  FaBars,
+  FaTimes,
+  FaHome
+} from 'react-icons/fa';
 import logo from '../../assets/img/icons/logo.png';
 import { ItemNavBar } from '../../UI/ItemNavBar/ItemNavBar';
-import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css';
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem("token"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setMenuOpen(false);
+  };
 
   return (
     <>
-      <div className="FontGeologica sticky top-0 bg-[var(--Voscuro2)] h-50 grid grid-cols-[1fr_auto] items-center z-50 FontGeologica text-white shadow-lg">
+      <div className="FontGeologica sticky top-0 bg-[var(--Voscuro2)] h-50 grid grid-cols-[1fr_auto] items-center z-50 text-white shadow-lg">
         
         {/* Logo y título */}
         <div className="flex items-center gap-4 m-4">
@@ -25,9 +39,24 @@ export function Header() {
 
         {/* Menú escritorio */}
         <div className="hidden md:flex justify-end items-center gap-6 pr-6">
-          <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-          <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
-          <ItemNavBar route='/LoginConductor' icon={FaTruckMoving} label="Conductor" />
+          {isLoggedIn ? (
+            <>
+              <ItemNavBar route='/PanelDU' icon={FaHome} label="Mi Panel" />
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-3 py-2 text-red-400 hover:text-red-600 transition"
+              >
+                <FaSignOutAlt />
+                <span className="hidden sm:inline">Cerrar sesión</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
+              <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
+              <ItemNavBar route='/LoginConductor' icon={FaTruckMoving} label="Conductor" />
+            </>
+          )}
         </div>
 
         {/* Botón hamburguesa móvil */}
@@ -41,12 +70,27 @@ export function Header() {
       {/* Menú móvil desplegable */}
       {menuOpen && (
         <div
-          className="md:hidden fixed top-[200px] left-0 right-0 bg-[var(--Voscuro2)] text-white px-6 py-4 shadow-md z-50 FontGeologica"
+          className="md:hidden fixed top-[200px] left-0 right-0 bg-[var(--Voscuro2)] text-white px-6 py-4 shadow-md z-50"
           onMouseLeave={() => setMenuOpen(false)}
         >
-          <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
-          <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
-          <ItemNavBar route='/LoginConductor' icon={FaTruckMoving} label="Conductor" />
+          {isLoggedIn ? (
+            <>
+              <ItemNavBar route='/PanelDU' icon={FaHome} label="Mi Panel" />
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-3 py-2 text-red-400 hover:text-red-600 transition"
+              >
+                <FaSignOutAlt />
+                <span>Cerrar sesión</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <ItemNavBar route='/Register' icon={FaUserPlus} label="Registro" />
+              <ItemNavBar route='/InicioS' icon={FaSignInAlt} label="Login" />
+              <ItemNavBar route='/LoginConductor' icon={FaTruckMoving} label="Conductor" />
+            </>
+          )}
         </div>
       )}
     </>
