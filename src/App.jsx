@@ -15,7 +15,7 @@ import SolicitudesE from './pages/SolicitudesE/SolicitudesE';
 import RutasU from './pages/RutasU/RutasU';
 import Conductores from './pages/Conductores/Conductores';
 import LoginConductor from './pages/LoginConductor/LoginConductor';
-import UserDashboard from './pages/PanelDU/PanelDu';
+import UserDashboard from './pages/PanelDU/PanelDU';
 import PanelEstadoCamiones from './pages/EstadoCamionesU/EstadoCamionesU';
 import PanelC from './pages/PanelC/PanelC';
 import ProtectedRoute from './UI/ProtectedRoute/ProtectedRoute';
