@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import { FcOk } from "react-icons/fc";
-import { MdOutlineCancel } from "react-icons/md";
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
@@ -22,7 +21,6 @@ const Solicitudes = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        // ✅ Guarda el array directamente
         setSolicitudes(response.data.data);
         console.log(response.data.data);
       } catch (error) {
@@ -60,32 +58,6 @@ const Solicitudes = () => {
     });
   };
 
-  const eliminarSolicitud = (index) => {
-    Swal.fire({
-      title: '¿Eliminar esta solicitud?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
-      cancelButtonColor: '#d33',
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      confirmButtonColor: '#0A372D',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const nuevasSolicitudes = solicitudes.filter((_, i) => i !== index);
-        setSolicitudes(nuevasSolicitudes);
-
-        Swal.fire({
-          icon: 'success',
-          title: 'Solicitud eliminada',
-          timer: 1500,
-          showConfirmButton: false
-        });
-      }
-    });
-  };
-
   const filteredSolicitudes = solicitudes.filter(s =>
     s.zona?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     s.fecha_solicitud?.includes(searchTerm) ||
@@ -115,8 +87,8 @@ const Solicitudes = () => {
       </div>
 
       {/* Contenido principal */}
-      <div className="flex-1 flex flex-col items-center justify-start md:pl-[220px] xl:pl-[240px] 2xl:pl-[280px] px-4 pt-28 md:pt-6 pb-6 FontGeologica relative w-full overflow-y-auto">
-        <div className="mt-30 sm:mt-15 w-full max-w-[1100px] bg-[var(--Voscuro2)] p-6 rounded-lg overflow-y-auto overflow-x-auto">
+      <div className="flex-1 flex flex-col items-center justify-start md:pl-[220px] xl:pl-[240px] 2xl:pl-[280px] px-4 pt-28 md:pt-6 pb-6 FontGeologica relative w-full overflow-hidden">
+        <div className="mt-30 sm:mt-15 w-full max-w-[1100px] bg-[var(--Voscuro2)] p-6 rounded-lg text-white">
           <h1 className="text-xl md:text-5xl text-white mb-6 text-center">Gestión de Solicitudes</h1>
 
           <div className="flex flex-col md:flex-row gap-8 mb-6">
@@ -129,8 +101,9 @@ const Solicitudes = () => {
             />
           </div>
 
-          <div className="w-full overflow-x-auto text-white">
-            <div className="hidden md:grid grid-cols-6 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)] min-w-[700px]">
+          {/* Contenedor scroll solo para los datos */}
+          <div className="w-full overflow-y-auto max-h-[60vh] pr-2 text-white">
+            <div className="hidden md:grid grid-cols-6 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)] min-w-[700px] text-white">
               <p>Zona</p>
               <p>Cant.</p>
               <p>Fecha</p>
@@ -142,13 +115,15 @@ const Solicitudes = () => {
             {filteredSolicitudes.length === 0 ? (
               <p className='text-white text-center mt-3 text-sm'>No hay solicitudes que coincidan.</p>
             ) : filteredSolicitudes.map(({ zona, cantidad, fecha_solicitud, tamano, nombres, aceptada }, index) => (
-              <div key={index} className={`grid grid-cols-1 md:grid-cols-6 gap-3 md:gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)] min-w-[220px] md:min-w-0 ${aceptada ? 'bg-[var(--Vclaro)] bg-opacity-40' : ''}`}>
+              <div
+                key={index}
+                className={`grid grid-cols-1 md:grid-cols-6 gap-3 md:gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)] min-w-[220px] md:min-w-0 ${aceptada ? 'bg-[var(--Vclaro)] bg-opacity-40' : ''} text-white`}
+              >
                 <div><span className="font-bold md:hidden">Zona: </span>{zona}</div>
                 <div><span className="font-bold md:hidden">Cant.: </span>{cantidad}</div>
                 <div><span className="font-bold md:hidden">Fecha: </span>{fecha_solicitud}</div>
                 <div><span className="font-bold md:hidden">Tamaño: </span>{tamano}</div>
                 <div><span className="font-bold md:hidden">Solicitante: </span>{nombres}</div>
-
                 <div className="flex gap-2 md:justify-center justify-start mt-2 md:mt-0">
                   <button
                     disabled={aceptada}
@@ -160,9 +135,7 @@ const Solicitudes = () => {
                   >
                     <FcOk className='cursor-pointer transition-transform duration-300 group-hover:rotate-2 group-hover:scale-105' />
                   </button>
-
                 </div>
-
               </div>
             ))}
           </div>

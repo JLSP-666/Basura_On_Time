@@ -5,12 +5,12 @@ import Home from './pages/Home/Home';
 import Usuario from './pages/Usuario/Usuario';
 import ContraR from './pages/ContraR/ContraR';
 import Register from './pages/Register/Register';
-import Admin from './pages/Admin/Admin'; // Login admin (público)
+import Admin from './pages/Admin/Admin';
 import PanelAdmin from './pages/PanelAdmin/PanelAdmin';
 import Solicitudes from './pages/Solicitudes/Solicitudes';
 import Rutas from './pages/Rutas/Rutas';
 import Camiones from './pages/Camiones/Camiones';
-import InicioS from './pages/InicioS/InicioS'; // Login usuario
+import InicioS from './pages/InicioS/InicioS';
 import SolicitudesE from './pages/SolicitudesE/SolicitudesE';
 import RutasU from './pages/RutasU/RutasU';
 import Conductores from './pages/Conductores/Conductores';
@@ -27,7 +27,7 @@ export function App() {
       <Route path="/" element={<Home />} />
       <Route path="/InicioS" element={<InicioS />} />
       <Route path="/Register" element={<Register />} />
-      <Route path="/Admin" element={<Admin/>} />
+      <Route path="/Admin" element={<Admin />} />
       <Route path="/ContraR" element={<ContraR />} />
       <Route path="/LoginConductor" element={<LoginConductor />} />
 
@@ -60,34 +60,34 @@ export function App() {
 
       {/* Rutas protegidas por conductor */}
       <Route path="/PanelC" element={
-        
+        <ProtectedRoute requiredRole="conductor">
           <PanelC />
-    
+        </ProtectedRoute>
       } />
 
       {/* Rutas protegidas por admin */}
       <Route path="/PanelAdmin" element={
-        <ProtectedRoute requiredRole="Admin">
+        <ProtectedRoute requiredRole="admin">
           <PanelAdmin />
         </ProtectedRoute>
       } />
       <Route path="/Camiones" element={
-        <ProtectedRoute requiredRole="Admin">
+        <ProtectedRoute requiredRole="admin">
           <Camiones />
         </ProtectedRoute>
       } />
       <Route path="/Rutas" element={
-        <ProtectedRoute requiredRole="Admin">
+        <ProtectedRoute requiredRole="admin">
           <Rutas />
         </ProtectedRoute>
       } />
       <Route path="/Solicitudes" element={
-        <ProtectedRoute requiredRole="Admin">
+        <ProtectedRoute requiredRole="admin">
           <Solicitudes />
         </ProtectedRoute>
       } />
       <Route path="/Conductores" element={
-        <ProtectedRoute requiredRole="Admin">
+        <ProtectedRoute requiredRole="admin">
           <Conductores />
         </ProtectedRoute>
       } />
