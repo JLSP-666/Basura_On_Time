@@ -10,7 +10,7 @@ const SolicitudForm = () => {
   const [zona, setZona] = useState("");
   const [fecha_solicitud, setFechaSolicitud] = useState("");
   const [cantidad, setCantidad] = useState("");
-  const [tipo_residuo, setTipoResiduo] = useState("");
+  const [tipo_c, setTipoResiduo] = useState("");
   const [tamano, setTamano] = useState("");
 
   const handleSubmit = async (e) => {
@@ -35,7 +35,7 @@ const SolicitudForm = () => {
     });
 
     try {
-      const formData = { zona, fecha_solicitud, cantidad, tipo_residuo, tamano };
+      const formData = { zona, fecha_solicitud, cantidad, tipo_c, tamano };
       await axios.post(URL, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -82,7 +82,7 @@ const SolicitudForm = () => {
           <InputField label="Zona" value={zona} onChange={(e) => setZona(e.target.value)} />
           <InputField label="Fecha de Solicitud" type="date" value={fecha_solicitud} onChange={(e) => setFechaSolicitud(e.target.value)} />
           <InputField label="Cantidad" type="number" value={cantidad} onChange={(e) => setCantidad(e.target.value)} />
-          <InputField label="Tipo de Residuo" value={tipo_residuo} onChange={(e) => setTipoResiduo(e.target.value)} />
+          <InputField label="Tipo de Residuo" value={tipo_c} onChange={(e) => setTipoResiduo(e.target.value)} />
           <InputField label="Tamaño" value={tamano} onChange={(e) => setTamano(e.target.value)} />
           <button
             type="submit"

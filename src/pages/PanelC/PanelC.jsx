@@ -67,7 +67,7 @@ export default function PanelConductor() {
   const cerrarSesion = () => {
     // Aquí tu lógica de cerrar sesión
     console.log("🚪 Cerrar sesión");
-    navigate("/login");
+    navigate("/LoginConductor");
   };
 
   return (
@@ -77,7 +77,7 @@ export default function PanelConductor() {
         <FaUserCircle size={50} className="text-white" />
         <div>
           <h1 className="text-3xl FontGeologica">Panel de Conductor</h1>
-          <p className="text-2xl">Brayan Aguirre</p>
+          <p className="text-2xl">señor conductor</p>
           <p className="text-sm text-gray-300 italic">Control del camión</p>
         </div>
       </div>

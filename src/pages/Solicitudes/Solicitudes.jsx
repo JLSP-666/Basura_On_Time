@@ -22,7 +22,9 @@ const Solicitudes = () => {
             Authorization: `Bearer ${token}`
           }
         });
-        setSolicitudes([response.data.data[0]]);
+        // ✅ Guarda el array directamente
+        setSolicitudes(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
         console.error('Error al obtener solicitudes:', error);
       }
@@ -86,7 +88,6 @@ const Solicitudes = () => {
 
   const filteredSolicitudes = solicitudes.filter(s =>
     s.zona?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    s.tipo_residuo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     s.fecha_solicitud?.includes(searchTerm) ||
     s.tamano?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     s.nombres?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -95,7 +96,6 @@ const Solicitudes = () => {
 
   return (
     <section className="sectFirst min-h-screen flex flex-col md:flex-row bg-[var(--Voscuro2)]">
-
       {/* Sidebar PC */}
       <div className="hidden md:flex flex-col justify-center items-center w-[220px] xl:w-[200px] 2xl:w-[280px] h-screen bg-[var(--Voscuro2)] fixed left-0 z-10">
         <div className="absolute top-4 left-4 z-50">
@@ -116,7 +116,6 @@ const Solicitudes = () => {
 
       {/* Contenido principal */}
       <div className="flex-1 flex flex-col items-center justify-start md:pl-[220px] xl:pl-[240px] 2xl:pl-[280px] px-4 pt-28 md:pt-6 pb-6 FontGeologica relative w-full overflow-y-auto">
-
         <div className="mt-30 sm:mt-15 w-full max-w-[1100px] bg-[var(--Voscuro2)] p-6 rounded-lg overflow-y-auto overflow-x-auto">
           <h1 className="text-xl md:text-5xl text-white mb-6 text-center">Gestión de Solicitudes</h1>
 
@@ -131,10 +130,9 @@ const Solicitudes = () => {
           </div>
 
           <div className="w-full overflow-x-auto text-white">
-            <div className="hidden md:grid grid-cols-7 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)] min-w-[700px]">
+            <div className="hidden md:grid grid-cols-6 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)] min-w-[700px]">
               <p>Zona</p>
               <p>Cant.</p>
-              <p>Tipo</p>
               <p>Fecha</p>
               <p>Tamaño</p>
               <p>Solicitante</p>
@@ -143,12 +141,10 @@ const Solicitudes = () => {
 
             {filteredSolicitudes.length === 0 ? (
               <p className='text-white text-center mt-3 text-sm'>No hay solicitudes que coincidan.</p>
-            ) : filteredSolicitudes.map(({ zona, cantidad, tipo_residuo, fecha_solicitud, tamano, nombres, aceptada }, index) => (
-              <div key={index} className={`grid grid-cols-1 md:grid-cols-7 gap-3 md:gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)] min-w-[220px] md:min-w-0 ${aceptada ? 'bg-[var(--Vclaro)] bg-opacity-40' : ''}`}>
-
+            ) : filteredSolicitudes.map(({ zona, cantidad, fecha_solicitud, tamano, nombres, aceptada }, index) => (
+              <div key={index} className={`grid grid-cols-1 md:grid-cols-6 gap-3 md:gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)] min-w-[220px] md:min-w-0 ${aceptada ? 'bg-[var(--Vclaro)] bg-opacity-40' : ''}`}>
                 <div><span className="font-bold md:hidden">Zona: </span>{zona}</div>
                 <div><span className="font-bold md:hidden">Cant.: </span>{cantidad}</div>
-                <div><span className="font-bold md:hidden">Tipo: </span>{tipo_residuo}</div>
                 <div><span className="font-bold md:hidden">Fecha: </span>{fecha_solicitud}</div>
                 <div><span className="font-bold md:hidden">Tamaño: </span>{tamano}</div>
                 <div><span className="font-bold md:hidden">Solicitante: </span>{nombres}</div>
@@ -165,16 +161,6 @@ const Solicitudes = () => {
                     <FcOk className='cursor-pointer transition-transform duration-300 group-hover:rotate-2 group-hover:scale-105' />
                   </button>
 
-                  <button
-                    disabled={aceptada}
-                    onClick={() => eliminarSolicitud(index)}
-                    className={`flex justify-center items-center rounded-md w-10 h-10
-                      ${aceptada ? 'bg-[var(--Rojo)] cursor-not-allowed' : 'bg-[var(--Rojo)] hover:scale-105 hover:shadow-2xl hover:bg-opacity-90'}
-                      text-white group transition-all duration-300 ease-in-out active:scale-95`}
-                    title={aceptada ? 'No se puede eliminar una solicitud aceptada' : 'Eliminar solicitud'}
-                  >
-                    <MdOutlineCancel className='cursor-pointer transition-transform duration-300 group-hover:rotate-2 group-hover:scale-105' />
-                  </button>
                 </div>
 
               </div>

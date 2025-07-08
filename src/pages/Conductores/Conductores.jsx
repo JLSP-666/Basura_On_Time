@@ -117,12 +117,12 @@ const Conductores = () => {
           </div>
 
           <div className="w-full text-white">
-            <div className="hidden md:grid grid-cols-8 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)]">
+            <div className="hidden md:grid grid-cols-7 gap-2 text-center items-center text-lg rounded-t-md h-14 p-3 border border-[var(--Vclaro3)] bg-[var(--Voscuro4)]">
               <p>Nombres</p><p>Apellidos</p><p>Teléfono</p><p>Licencia</p><p>Vence</p><p>Email</p><p>Acción</p>
             </div>
 
             {conductoresFiltrados.map((conductor, index) => (
-              <div key={index} className="grid grid-cols-1 md:grid-cols-8 gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)]">
+              <div key={index} className="grid grid-cols-1 md:grid-cols-7 gap-2 text-left md:text-center text-sm md:text-lg p-4 border border-[var(--Vclaro3)]">
                 <p>{conductor.nombres}</p>
                 <p>{conductor.apellidos}</p>
                 <p>{conductor.telefono}</p>
