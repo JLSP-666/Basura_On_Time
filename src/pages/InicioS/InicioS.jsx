@@ -5,7 +5,7 @@ import axios from 'axios';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
-import './inicioS.css';
+
 
 const XLanding = () => {
   const URL = 'https://express-latest-6gmf.onrender.com/auth';
