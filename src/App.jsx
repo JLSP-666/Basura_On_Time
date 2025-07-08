@@ -27,7 +27,7 @@ export function App() {
       <Route path="/" element={<Home />} />
       <Route path="/InicioS" element={<InicioS />} />
       <Route path="/Register" element={<Register />} />
-      <Route path="/Admin" element={<Admin />} />
+      <Route path="/Admin" element={<Admin/>} />
       <Route path="/ContraR" element={<ContraR />} />
       <Route path="/LoginConductor" element={<LoginConductor />} />
 
@@ -67,27 +67,27 @@ export function App() {
 
       {/* Rutas protegidas por admin */}
       <Route path="/PanelAdmin" element={
-        <ProtectedRoute requiredRole="admin">
+        <ProtectedRoute requiredRole="Admin">
           <PanelAdmin />
         </ProtectedRoute>
       } />
       <Route path="/Camiones" element={
-        <ProtectedRoute requiredRole="admin">
+        <ProtectedRoute requiredRole="Admin">
           <Camiones />
         </ProtectedRoute>
       } />
       <Route path="/Rutas" element={
-        <ProtectedRoute requiredRole="admin">
+        <ProtectedRoute requiredRole="Admin">
           <Rutas />
         </ProtectedRoute>
       } />
       <Route path="/Solicitudes" element={
-        <ProtectedRoute requiredRole="admin">
+        <ProtectedRoute requiredRole="Admin">
           <Solicitudes />
         </ProtectedRoute>
       } />
       <Route path="/Conductores" element={
-        <ProtectedRoute requiredRole="admin">
+        <ProtectedRoute requiredRole="Admin">
           <Conductores />
         </ProtectedRoute>
       } />
