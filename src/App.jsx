@@ -19,6 +19,7 @@ import UserDashboard from './pages/PanelDU/PanelDU';
 import PanelEstadoCamiones from './pages/EstadoCamionesU/EstadoCamionesU';
 import PanelC from './pages/PanelC/PanelC';
 import ProtectedRoute from './UI/ProtectedRoute/ProtectedRoute';
+import Recuperar from './pages/Recuperar/Recuperar'
 
 export function App() {
   return (
@@ -30,6 +31,7 @@ export function App() {
       <Route path="/Admin" element={<Admin />} />
       <Route path="/ContraR" element={<ContraR />} />
       <Route path="/LoginConductor" element={<LoginConductor />} />
+      <Route path="/Recuperar" element={<Recuperar />} />
 
       {/* Rutas protegidas por usuario */}
       <Route path="/Usuario" element={
@@ -60,9 +62,9 @@ export function App() {
 
       {/* Rutas protegidas por conductor */}
       <Route path="/PanelC" element={
-        <ProtectedRoute requiredRole="conductor">
+      
           <PanelC />
-        </ProtectedRoute>
+  
       } />
 
       {/* Rutas protegidas por admin */}

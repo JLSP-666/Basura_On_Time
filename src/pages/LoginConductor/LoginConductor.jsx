@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import { ItemNavBar } from '../../UI/BotonBack/BotonBack';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
 import Swal from 'sweetalert2';
@@ -31,15 +31,13 @@ export default function LoginConductor() {
     }
 
     try {
-      const response = await axios.post('https://express-latest-6gmf.onrender.com/loginConductor/iniciar', {
+      const response = await axios.post('https://express-latest-6gmf.onrender.com/loginConductor', {
         email: loginData.correo,
         password: loginData.contraseña
-      });
+      },);
 
-      const {id_usuario } = response.data;
-
-      // Puedes usar estos valores en memoria si los necesitas
-      console.log('ID usuario:', id_usuario);
+      const token = response.data.token
+      localStorage.setItem('token', token)
 
       Swal.fire({
         icon: 'success',

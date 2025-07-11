@@ -5,7 +5,7 @@ import logoBasuraOnTime from "../../assets/img/icons/logoBasuraOnTime.png";
 
 const SolicitudForm = () => {
   const token = localStorage.getItem("token");
-  const URL = "http://localhost:10101/requests";
+  const URL = "https://express-latest-6gmf.onrender.com/requests";
 
   const [zona, setZona] = useState("");
   const [fecha_solicitud, setFechaSolicitud] = useState("");
@@ -75,10 +75,10 @@ const SolicitudForm = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[var(--Voscuro)] flex flex-col md:flex-row justify-center items-center p-4 pt-20 md:gap-20 relative">
+    <section className="min-h-screen bg-[var(--Voscuro)] flex flex-col md:flex-row justify-center items-center p-4 pt-0 md:gap-15 relative">
 
       {/* Logo y título */}
-      <div className="flex flex-col justify-center items-center mb-10 md:mb-0">
+      <div className="flex flex-col justify-center items-center mb-10 md:mb-10">
         <img className="w-24 h-24 mb-4 md:w-[200px] md:h-[200px]" src={logoBasuraOnTime} alt="Logo" />
         <p className="FontCursive text-3xl md:text-6xl text-center text-white">BASURA ON TIME</p>
       </div>
