@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Pencil, Trash2, Mail, User, Phone, Lock } from 'lucide-react';
 import Swal from 'sweetalert2';
 import logoBasuraOnTime from '../../assets/img/icons/logoBasuraOnTime.png';
-import MapaUbicacion from '../../Layouts/MapGoogle/Mapaubicacion';
+import MapaUbicacion from '../../Layouts/MapGoogle/MapaUbicacion';
 import { useNavigate } from "react-router-dom";
 import './Usuario.css';
 
